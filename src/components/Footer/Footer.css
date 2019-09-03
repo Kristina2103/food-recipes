@@ -1,0 +1,16 @@
+.Footer {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+.SocialIcons,
+.Logo {
+  flex: 1;
+}
+.SocialIcons {
+  text-align: right;
+}
+.Copyright {
+  text-align: center;
+}

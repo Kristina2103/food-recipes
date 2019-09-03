@@ -1,0 +1,10 @@
+.Logo {
+  background-color: #fff;
+  height: 100%;
+  cursor: pointer;
+  width: 250px;
+}
+.Logo img {
+  height: 100%;
+  width: 100%;
+}

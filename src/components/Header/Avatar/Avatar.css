@@ -1,0 +1,13 @@
+.Avatar {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.Avatar:hover {
+  color: #e99e13;
+  border: 1px solid #e99e13;
+  transition: all 0.5s ease-out;
+}
