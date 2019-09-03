@@ -1,18 +1,28 @@
 .Tooltip {
-  /* width: 30%; */
+  width: 250px;
   padding: 2rem;
-  background: blue;
+  background: #efefef;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 8px #5e5c5c;
   position: absolute;
-  top: 230%;
-  right: -50%;
+  top: 250%;
+  left: -90%;
+  transition: all 0.5s ease-out;
+  z-index: 500;
+}
+.Close {
+  opacity: 0;
+}
+.Open {
+  opacity: 1;
 }
 .Tooltip::after {
   content: "";
   position: absolute;
   bottom: 100%;
   left: 50%;
-  margin-left: -10px;
-  border-width: 10px;
+  margin-left: -100px;
+  border-width: 15px;
   border-style: solid;
-  border-color: transparent transparent blue transparent;
+  border-color: transparent transparent #efefef transparent;
 }

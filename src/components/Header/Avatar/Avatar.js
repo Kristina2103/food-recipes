@@ -1,9 +1,9 @@
 import React from "react";
 
 import classes from "./Avatar.css";
-const Avatar = () => (
-  <span className={classes.Avatar}>
-    <i class="far fa-user"></i>
+const Avatar = props => (
+  <span onClick={props.onAvatarClick} className={classes.Avatar}>
+    <i className="far fa-user"></i>
   </span>
 );
 

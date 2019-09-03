@@ -1,0 +1,48 @@
+.Button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 10px;
+  font-weight: 300;
+  border-radius: 15px;
+}
+
+.Primary:hover {
+  background-color: #fff;
+  color: #e99e13;
+  border: 1px solid #e99e13;
+  transition: all 0.5s ease-out;
+}
+.Button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+.Primary {
+  background-color: #e99e13;
+  width: 70%;
+  float: right;
+  transition: all 0.3s ease-out;
+}
+.Success {
+  background-color: #5c9210;
+}
+
+.Danger {
+  background-color: #944317;
+}
+.Logout {
+  color: #79ae4a;
+  margin: 5px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.Delete {
+  color: #944317;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
