@@ -4,10 +4,11 @@
   align-items: center;
 }
 .Input input,
-.Input select {
+.Input select,
+textarea {
   width: 80%;
   padding: 6px 5px;
-  margin: 4px 0;
+  margin: 8px 0;
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid #ccc;
@@ -15,20 +16,13 @@
 .Input:focus {
   outline: none;
 }
-.Input label {
-  width: 70%;
-  padding: 0;
-  margin: 0;
-  text-align: left;
+textarea {
+  margin-top: 20px;
 }
-.Invalid {
-  border: 1px solid red;
-  background-color: #ffe9e9;
-}
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .Input input,
   .Input select,
-  .Input label {
+  textarea {
     width: 100%;
   }
 }

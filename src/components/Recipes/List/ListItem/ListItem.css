@@ -1,0 +1,16 @@
+.ListItem {
+  margin: 4px;
+  flex: 0 0 calc(20% -8px);
+}
+.Name {
+  font-size: 18px;
+  font-weight: 900;
+}
+.Image {
+  cursor: pointer;
+  transition: all 2sec ease-out;
+}
+.Image:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease-out;
+}

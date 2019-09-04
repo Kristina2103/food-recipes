@@ -67,6 +67,7 @@ class Auth extends Component {
         <Input
           key={el}
           value={this.state.auth[el].value}
+          elementType={this.state.auth[el].elementType}
           onInputChange={e => this.onInputChange(e, el)}
           elementConfig={this.state.auth[el].elementConfig}
         />

@@ -21,7 +21,7 @@ class MenuList extends Component {
 
     if (this.props.location.pathname !== "/")
       home = (
-        <MenuItem path="/" exact="exact" menuItemClass={menuItemClass}>
+        <MenuItem path="/" exact={true} menuItemClass={menuItemClass}>
           Home
         </MenuItem>
       );

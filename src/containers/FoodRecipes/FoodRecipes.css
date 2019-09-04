@@ -28,12 +28,36 @@
 } */
 
 /* NOVOOOOO */
+section {
+  padding-top: 100px;
+}
+.First {
+  padding-top: 0;
+}
 .ImgDiv,
 .TextDiv {
   flex: 1;
   display: flex;
   align-items: center;
   flex-flow: column;
+}
+.Underlined {
+  font-weight: 300;
+  margin-bottom: 80px;
+  color: rgba(0, 0, 0, 0.748);
+}
+.Underlined span {
+  position: relative;
+}
+.Underlined span:after {
+  background-color: black;
+  content: "";
+  width: 100%;
+  height: 0px;
+  position: absolute;
+  bottom: -17px;
+  left: 0;
+  border-style: solid;
 }
 .Hero .ImgDiv img,
 .TextDivChild {
@@ -43,9 +67,17 @@
 .Hero .TextDivChild button {
   margin: 0;
 }
+.Contact {
+  text-align: center;
+  width: 400px;
+  margin: 0 auto;
+}
 
 @media (max-width: 800px) {
   .Hero {
     flex-flow: column;
+  }
+  .Contact {
+    width: 60%;
   }
 }

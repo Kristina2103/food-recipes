@@ -7,8 +7,6 @@ const MenuItem = props => {
   props.menuItemClass
     ? menuItemClasses.push(classes.Light)
     : menuItemClasses.push(classes.Dark);
-
-  console.log(props.menuItemClass);
   return (
     <li className={menuItemClasses.join(" ")}>
       <NavLink to={props.path} smooth={props.smooth} exact={props.exact}>

@@ -17,6 +17,7 @@ const Input = props => {
     case "textarea":
       inputElement = (
         <textarea
+          rows="7"
           className={classes.Input}
           {...props.elementConfig}
           value={props.value}
@@ -48,11 +49,6 @@ const Input = props => {
       );
   }
 
-  return (
-    <div className={classes.Input}>
-      <label>{props.label}</label>
-      {inputElement}
-    </div>
-  );
+  return <div className={classes.Input}>{inputElement}</div>;
 };
 export default Input;
