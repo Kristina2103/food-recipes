@@ -1,9 +1,14 @@
 .Header {
-  padding: 20px 30px;
+  padding: 20px 0px;
   display: flex;
   position: relative;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
+}
+.Fixed {
+  position: fixed;
+  width: 100%;
+  background: #fff;
 }

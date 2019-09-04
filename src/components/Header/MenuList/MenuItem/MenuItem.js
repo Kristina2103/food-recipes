@@ -1,10 +1,12 @@
 import React from "react";
 import classes from "./MenuItem.css";
+import { NavHashLink as NavLink } from "react-router-hash-link";
 
 const MenuItem = props => (
   <li className={classes.MenuItem}>
-    {/* <a href={props.link} className={props.active ? classes.active : null}>{props.children}</a> */}
-    <a href="/">{props.children}</a>
+    <NavLink to={props.path} smooth={props.smooth} exact={props.exact}>
+      {props.children}
+    </NavLink>
   </li>
 );
 

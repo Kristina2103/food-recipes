@@ -1,3 +1,4 @@
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILED = "LOGIN_FAILED";
 export const TOGGLE_LOGIN_TOOLTIP = "TOGGLE_LOGIN_TOOLTIP";
+export const LOGOUT = "LOGOUT";

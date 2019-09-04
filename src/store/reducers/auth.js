@@ -25,6 +25,12 @@ const toggleLoginTooltip = state => {
     isTooltipOpened: !state.isTooltipOpened
   };
 };
+const logout = state => {
+  return {
+    ...state,
+    isAuth: false
+  };
+};
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN_SUCCESS:
@@ -33,6 +39,8 @@ const authReducer = (state = initialState, action) => {
       return loginFailed(state);
     case actionTypes.TOGGLE_LOGIN_TOOLTIP:
       return toggleLoginTooltip(state);
+    case actionTypes.LOGOUT:
+      return logout(state);
     default:
       return state;
   }

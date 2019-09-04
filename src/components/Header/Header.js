@@ -6,9 +6,11 @@ import MenuList from "./MenuList/MenuList";
 class Header extends Component {
   render() {
     return (
-      <div className={classes.Header}>
-        <SearchBar />
-        <MenuList />
+      <div className={classes.Fixed}>
+        <div className={classes.Header}>
+          <SearchBar />
+          <MenuList />
+        </div>
       </div>
     );
   }

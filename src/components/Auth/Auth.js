@@ -59,11 +59,9 @@ class Auth extends Component {
   };
 
   render() {
-    console.log(this.state);
     let wrongCredentialsMsg = "";
     if (this.props.wrongCredentials)
-      wrongCredentialsMsg = "Email:admin@admin.com , Pass: admin123";
-    console.log("isauth", this.props.isAuth);
+      wrongCredentialsMsg = "Email: admin@admin.com Pass: admin123";
     const inputs = Object.keys(this.state.auth).map(el => {
       return (
         <Input
@@ -74,18 +72,27 @@ class Auth extends Component {
         />
       );
     });
-
+    let tooltip = (
+      <Tooltip opened={this.props.isTooltipOpened}>
+        <form onSubmit={this.onFormSubmit}>
+          {inputs}
+          <p className={classes.ErrorMsg}>{wrongCredentialsMsg}</p>
+          <Button typeButton="Primary">Submit</Button>
+        </form>
+      </Tooltip>
+    );
+    if (this.props.isAuth)
+      tooltip = (
+        <Tooltip opened={this.props.isTooltipOpened}>
+          <Button typeButton="Success" clicked={this.props.logOut}>
+            Logout
+          </Button>
+        </Tooltip>
+      );
     return (
       <div className={classes.Auth}>
         <Avatar onAvatarClick={this.onAvatarClick} />
-        <Tooltip opened={this.props.isTooltipOpened}>
-          <form onSubmit={this.onFormSubmit}>
-            {inputs}
-
-            <p className={classes.ErrorMsg}>{wrongCredentialsMsg}</p>
-            <Button typeButton="Primary">Submit</Button>
-          </form>
-        </Tooltip>
+        {tooltip}
       </div>
     );
   }
@@ -101,6 +108,7 @@ const mapDispatchToProps = dispatch => {
   return {
     logInSuccess: (email, pass) => dispatch(actions.logInSuccess(email, pass)),
     logInFailed: () => dispatch(actions.logInFailed()),
+    logOut: () => dispatch(actions.logOut()),
     toggleLoginTooltip: () => dispatch(actions.toggleLoginTooltip())
   };
 };
