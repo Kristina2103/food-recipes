@@ -1,15 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 import authReducer from "./store/reducers/auth";
+import mainReducer from "./store/reducers/main";
+
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+const reducers = combineReducers({
+  auth: authReducer,
+  main: mainReducer
+});
 const store = createStore(
-  authReducer,
+  reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 ReactDOM.render(

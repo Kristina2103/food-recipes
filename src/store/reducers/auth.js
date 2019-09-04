@@ -3,14 +3,14 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   isAuth: false,
   wrongCredentials: false,
-  isTooltipOpened: false
+  isTooltipOpened: false,
+  isMobileOpen: true
 };
 const logInSuccess = state => {
   return {
     ...state,
     isAuth: true,
-    wrongCredentials: false,
-    isTooltipOpened: false
+    wrongCredentials: false
   };
 };
 const loginFailed = state => {

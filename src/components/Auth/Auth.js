@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions/auth";
+import * as actions from "../../store/actions/index";
 
 import classes from "./Auth.css";
 import Tooltip from "../UI/Tooltip/Tooltip";
@@ -84,6 +84,8 @@ class Auth extends Component {
     if (this.props.isAuth)
       tooltip = (
         <Tooltip opened={this.props.isTooltipOpened}>
+          <h3>You are successfully logged in!</h3>
+
           <Button typeButton="Success" clicked={this.props.logOut}>
             Logout
           </Button>
@@ -99,9 +101,9 @@ class Auth extends Component {
 }
 const mapStateToProps = state => {
   return {
-    isAuth: state.isAuth,
-    wrongCredentials: state.wrongCredentials,
-    isTooltipOpened: state.isTooltipOpened
+    isAuth: state.auth.isAuth,
+    wrongCredentials: state.auth.wrongCredentials,
+    isTooltipOpened: state.auth.isTooltipOpened
   };
 };
 const mapDispatchToProps = dispatch => {

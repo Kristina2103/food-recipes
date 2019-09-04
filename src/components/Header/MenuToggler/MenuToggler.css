@@ -1,0 +1,27 @@
+.MenuToggler {
+  width: 40px;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  padding: 10px 0;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+.MenuToggler:hover {
+  opacity: 0.6;
+  transition: all 0.5s ease-out;
+}
+.MenuToggler div {
+  width: 90%;
+  height: 3px;
+  background-color: #e99e13;
+  margin: 3px 0;
+}
+@media (min-width: 799px) {
+  .MenuToggler {
+    display: none;
+  }
+}

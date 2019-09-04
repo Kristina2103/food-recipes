@@ -5,10 +5,18 @@
 .MenuItem a {
   text-decoration: none;
   font-weight: 800;
-  color: #352b2b;
   font-size: 18px;
 }
 .MenuItem a:hover {
   color: #e99e13;
   transition: all 0.5s ease-out;
+}
+.Dark a {
+  color: #352b2b;
+}
+.Light {
+  margin-left: 0;
+}
+.Light a {
+  color: #fff;
 }

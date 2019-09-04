@@ -12,3 +12,15 @@
   width: 100%;
   background: #fff;
 }
+.MobileOnly {
+  display: none;
+}
+@media (max-width: 800px) {
+  .DesktopOnly {
+    display: none;
+  }
+  .MobileOnly {
+    display: flex;
+    align-items: center;
+  }
+}

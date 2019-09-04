@@ -26,3 +26,22 @@
   border-style: solid;
   border-color: transparent transparent #efefef transparent;
 }
+@media (max-width: 800px) and (min-width: 500px) {
+  .Tooltip {
+    left: -250px;
+  }
+  .Tooltip::after {
+    left: 113%;
+  }
+}
+@media (max-width: 499px) {
+  .Tooltip {
+    position: fixed;
+    width: 60%;
+    top: 10%;
+    left: 10%;
+  }
+  .Tooltip::after {
+    display: none;
+  }
+}

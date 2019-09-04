@@ -1,0 +1,32 @@
+.Overlay {
+  opacity: 0.9;
+  width: 100%;
+  height: 100vh;
+  background-color: #645d5d;
+  align-items: center;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  box-sizing: border-box;
+}
+.Open {
+  display: block;
+}
+.Close {
+  display: none;
+}
+.MobileMenu {
+  height: 50%;
+  margin: 10% auto;
+  display: flex;
+  flex-flow: column;
+}
+.MobileMenu .Logo {
+  flex: 1;
+}
+
+.MobileNav {
+  flex: 3;
+  display: flex;
+  flex-flow: column;
+}

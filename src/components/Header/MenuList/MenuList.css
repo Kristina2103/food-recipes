@@ -5,3 +5,14 @@
   height: 100%;
   justify-content: space-between;
 }
+
+.Open {
+  flex-flow: column;
+  padding-left: 0;
+}
+
+@media (max-width: 500px) {
+  .LogoImg {
+    width: 70%;
+  }
+}

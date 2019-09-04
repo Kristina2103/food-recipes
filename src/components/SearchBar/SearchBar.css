@@ -12,6 +12,7 @@
 }
 .SearchBar input:focus {
   outline: none;
+  border: 1px solid #e99e13;
 }
 .SearchBar button {
   background: none;
@@ -28,4 +29,9 @@
   color: #e99e13;
   opacity: 1;
   transition: all 0.5s ease-out;
+}
+@media (max-width: 499px) {
+  .SearchBar {
+    display: none;
+  }
 }

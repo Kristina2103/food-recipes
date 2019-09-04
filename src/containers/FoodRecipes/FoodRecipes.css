@@ -1,3 +1,51 @@
 .FoodRecipes {
   color: #ccc;
 }
+.Hero {
+  display: flex;
+  align-items: center;
+}
+
+/*  STAROOOO */
+/* .ImgDiv,
+.TextDiv {
+  flex: 1;
+}
+.Hero .ImgDiv {
+  text-align: right;
+}
+.Hero .ImgDiv img,
+.TextDivChild {
+  max-width: 80%;
+  padding: 10px;
+}
+.Hero .TextDivChild {
+  float: right;
+  width: 70%;
+}
+.Hero .TextDivChild button {
+  float: left;
+} */
+
+/* NOVOOOOO */
+.ImgDiv,
+.TextDiv {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+.Hero .ImgDiv img,
+.TextDivChild {
+  max-width: 80%;
+  padding: 10px;
+}
+.Hero .TextDivChild button {
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .Hero {
+    flex-flow: column;
+  }
+}
