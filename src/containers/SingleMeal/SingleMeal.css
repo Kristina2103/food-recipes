@@ -1,0 +1,33 @@
+section {
+  padding-top: 100px;
+}
+.First {
+  padding-top: 0;
+}
+.Hero {
+  display: flex;
+  align-items: center;
+}
+.Image,
+.Hero h1,
+.Hero p {
+  flex: 1;
+  margin-right: 40px;
+}
+.Details {
+  flex: 2;
+}
+.Hero img {
+  width: 100%;
+}
+.Details ul {
+  padding: 0;
+  list-style-type: none;
+}
+.Bold,
+.Tag {
+  font-weight: 900;
+}
+.Tag {
+  text-align: left;
+}

@@ -9,7 +9,6 @@ import List from "../../components/Recipes/List/List";
 import ListItem from "../../components/Recipes/List/ListItem/ListItem";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
-import axios from "axios";
 
 class Category extends Component {
   componentDidMount() {

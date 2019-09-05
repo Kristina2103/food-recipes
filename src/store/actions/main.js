@@ -30,7 +30,20 @@ export const updateRecipeListBySearch = data => {
     filteredList: data
   };
 };
-
+// Get single recipe details
+export const getSingleMeal = id => {
+  return dispatch => {
+    axios
+      .get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+      .then(res => dispatch(getSingleMealSuccess(res.data.meals[0])));
+  };
+};
+const getSingleMealSuccess = singleMeal => {
+  return {
+    type: actionTypes.GET_SINGLE_MEAL_SUCCESS,
+    singleMeal
+  };
+};
 //Get category list
 export const getCategoryList = () => {
   return dispatch => {

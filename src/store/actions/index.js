@@ -4,5 +4,6 @@ export {
   getCategoryList,
   getRecipesByCategory,
   getRecommendedRecipe,
-  updateRecipeListBySearch
+  updateRecipeListBySearch,
+  getSingleMeal
 } from "./main";

@@ -6,7 +6,8 @@ const initialState = {
   errorCategory: false,
   recipesByCategory: [],
   recommendedRecipe: [],
-  updateRecipeListBySearch: null
+  updateRecipeListBySearch: null,
+  singleMeal: null
 };
 const toggleMobileMenu = state => {
   return {
@@ -48,7 +49,6 @@ const getRecipesByCategorySuccess = (state, action) => {
       id: el.idMeal
     };
   });
-  console.log(recipesByCategory);
   return {
     ...state,
     recipesByCategory: recipesByCategory
@@ -66,6 +66,12 @@ const updateRecipeListBySearch = (state, action) => {
     updateRecipeListBySearch: action.filteredList
   };
 };
+const getSingleMeal = (state, action) => {
+  return {
+    ...state,
+    singleMeal: action.singleMeal
+  };
+};
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_MOBILE_MENU:
@@ -80,6 +86,8 @@ const mainReducer = (state = initialState, action) => {
       return getRecommendedRecipe(state, action);
     case actionTypes.UPDATE_RECIPE_LIST_BY_SEARCH:
       return updateRecipeListBySearch(state, action);
+    case actionTypes.GET_SINGLE_MEAL_SUCCESS:
+      return getSingleMeal(state, action);
     default:
       return state;
   }
