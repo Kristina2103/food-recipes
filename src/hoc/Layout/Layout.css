@@ -1,7 +1,7 @@
 .Main {
   flex: 1;
   margin: 0 auto;
-  padding-top: 210px;
+  padding-top: 150px;
   width: 90%;
   overflow: hidden;
 }
@@ -13,6 +13,6 @@
 }
 @media (max-width: 800px) {
   .Main {
-    padding-top: 150px;
+    padding-top: 120px;
   }
 }

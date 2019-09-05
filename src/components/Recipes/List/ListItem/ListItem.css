@@ -1,16 +1,29 @@
-.ListItem {
-  margin: 4px;
-  flex: 0 0 calc(20% -8px);
-}
 .Name {
   font-size: 18px;
-  font-weight: 900;
+  text-align: center;
+}
+.ListItem {
+  margin: 40px;
+}
+.Col4 {
+  flex: 0 1 calc(24% - 80px);
+}
+.Col3 {
+  flex: 0 1 calc(32% - 80px);
 }
 .Image {
   cursor: pointer;
-  transition: all 2sec ease-out;
+  transition: all 2s ease-out;
+  width: 100%;
+  margin: 0 auto;
 }
 .Image:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
   transition: all 0.5s ease-out;
+}
+.Light .Name {
+  font-weight: 300;
+}
+.Dark .Name {
+  font-weight: 900;
 }

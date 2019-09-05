@@ -6,6 +6,32 @@ export const toggleMobileMenu = () => {
     type: actionTypes.TOGGLE_MOBILE_MENU
   };
 };
+
+//Get recipes by category
+export const getRecipesByCategory = name => {
+  return dispatch => {
+    axios
+      .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`)
+      .then(res => {
+        dispatch(getRecipesByCategorySuccess(res.data.meals));
+      });
+  };
+};
+export const getRecipesByCategorySuccess = meals => {
+  return {
+    type: actionTypes.GET_RECIPES_BY_CATEGORY_SUCCESS,
+    meals
+  };
+};
+//Search Recipes
+export const updateRecipeListBySearch = data => {
+  return {
+    type: actionTypes.UPDATE_RECIPE_LIST_BY_SEARCH,
+    filteredList: data
+  };
+};
+
+//Get category list
 export const getCategoryList = () => {
   return dispatch => {
     axios
@@ -18,15 +44,6 @@ export const getCategoryList = () => {
       });
   };
 };
-export const openCategoryPage = (id, history, name) => {
-  history.push(`/category/${name}`);
-  return dispatch => {
-    axios
-      .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${id}`)
-      .then(res => console.log(res));
-  };
-};
-
 export const getCategoryListSuccess = categories => {
   return {
     type: actionTypes.GET_CATEGORY_LIST_SUCCESS,
@@ -36,5 +53,19 @@ export const getCategoryListSuccess = categories => {
 export const getCategoryListFailed = errorMsg => {
   return {
     type: actionTypes.GET_CATEGORY_LIST_FAILED
+  };
+};
+//Get recommended recipe
+export const getRecommendedRecipe = () => {
+  return dispatch => {
+    axios
+      .get("https://www.themealdb.com/api/json/v1/1/random.php")
+      .then(res => dispatch(getRecommendedRecipeSuccess(res.data.meals[0])));
+  };
+};
+const getRecommendedRecipeSuccess = recommendedRecipe => {
+  return {
+    type: actionTypes.GET_RECOMMENDED_RECIPE_SUCCESS,
+    recommendedRecipe
   };
 };

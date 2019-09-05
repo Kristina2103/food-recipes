@@ -1,24 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../../store/actions/index";
 
 import classes from "./List.css";
 import ListItem from "./ListItem/ListItem";
 import { withRouter } from "react-router-dom";
 class List extends Component {
-  onListImageClick = (id, name) => {
-    const funcName = "get" + this.props.listType + "Item";
-    const history = this.props.history;
-    this.props[funcName](id, history, name);
-    // this.props.getcategoryListItem(id, history);
+  onListImageClick = param => {
+    this.props.history.push(`/${this.props.onImageClickPath}/${param}`);
   };
   render() {
-    const list = Object.values(this.props[this.props.listType]).map(el => {
+    let obj = this.props[this.props.listType];
+    if (this.props.filteredList) {
+      obj = this.props.filteredList;
+    }
+    const list = Object.values(obj).map(el => {
       return (
         <ListItem
           {...el}
+          listStyle={this.props.listStyle}
+          itemsPerRow={this.props.itemsPerRow}
           key={el.id}
-          onListImageClick={() => this.onListImageClick(el.id, el.name)}
+          onListImageClick={() => this.onListImageClick(el[this.props.param])}
         />
       );
     });
@@ -27,18 +29,10 @@ class List extends Component {
 }
 const mapStateToProps = state => {
   return {
-    categoryList: state.main.categoryList
+    category: state.main.categoryList,
+    recipesByCategory: state.main.recipesByCategory,
+    filteredList: state.main.updateRecipeListBySearch
   };
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    getcategoryListItem: (id, history, name) =>
-      dispatch(actions.openCategoryPage(id, history, name))
-  };
-};
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(List)
-);
+
+export default withRouter(connect(mapStateToProps)(List));

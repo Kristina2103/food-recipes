@@ -14,9 +14,7 @@ class FoodRecipes extends Component {
   componentDidMount() {
     this.props.getCategoryList();
   }
-  onListImageClick = id => {
-    alert(id);
-  };
+
   render() {
     let content = this.props.errorCategory ? (
       "Error! Can't fetch data!"
@@ -47,7 +45,13 @@ class FoodRecipes extends Component {
             </div>
           </section>
           <section className={classes.Categories}>
-            <List listType="categoryList" />
+            <List
+              listType="category"
+              listStyle="Dark"
+              itemsPerRow="4"
+              param="name"
+              onImageClickPath="category"
+            />
           </section>
 
           <section id="about">
@@ -100,9 +104,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    getCategoryList: () => dispatch(actions.getCategoryList()),
-    openCategoryPage: categoryId =>
-      dispatch(actions.openCategoryPage(categoryId))
+    getCategoryList: () => dispatch(actions.getCategoryList())
   };
 };
 export default connect(

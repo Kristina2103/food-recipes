@@ -10,7 +10,7 @@ class Header extends Component {
     return (
       <div className={classes.Fixed}>
         <div className={classes.Header}>
-          <SearchBar />
+          <SearchBar placeholder="Search recipes" />
           <div className={classes.MobileOnly}>
             <Auth />
             <MenuToggler onMenuTogglerClick={this.props.onMenuTogglerClick} />

@@ -1,0 +1,25 @@
+section {
+  padding-top: 100px;
+}
+.First {
+  padding-top: 0;
+}
+.Hero {
+  display: flex;
+  box-sizing: border-box;
+  /* justify-content: center; */
+}
+.SearchBar {
+  flex: 2;
+}
+.SearchBar form {
+  float: right;
+}
+.Recommended {
+  text-align: left;
+  flex: 0 0 300px;
+}
+.Recommended div {
+  /* width: 100%; */
+  margin: 0;
+}

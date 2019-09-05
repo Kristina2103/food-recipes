@@ -1,2 +1,8 @@
 export { toggleLoginTooltip, logOut, logInFailed, logInSuccess } from "./auth";
-export { toggleMobileMenu, getCategoryList, openCategoryPage } from "./main";
+export {
+  toggleMobileMenu,
+  getCategoryList,
+  getRecipesByCategory,
+  getRecommendedRecipe,
+  updateRecipeListBySearch
+} from "./main";

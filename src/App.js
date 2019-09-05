@@ -21,7 +21,7 @@ class App extends Component {
         <Layout>
           <Switch>
             {protectedRoutes}
-            <Route path="/single-meal" component={MyMeals} />
+            <Route path="/singleMeal/:id" component={MyMeals} />
             <Route path="/category/:name" component={Category} />
             <Route path="/search-recipes" component={Search} />
             <Route path="/" exact component={FoodRecipes} />

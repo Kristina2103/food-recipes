@@ -1,8 +1,14 @@
 import React from "react";
 import classes from "./ListItem.css";
 const ListItem = props => {
+  let ListItemClasses = [classes.ListItem];
+  props.itemsPerRow === "4"
+    ? ListItemClasses.push(classes.Col4)
+    : ListItemClasses.push(classes.Col3);
+  ListItemClasses.push(classes[props.listStyle]);
+
   return (
-    <div className={classes.ListItem}>
+    <div className={ListItemClasses.join(" ")}>
       <img
         className={classes.Image}
         src={props.img}
