@@ -37,10 +37,10 @@ class MenuList extends Component {
         {auth}
         {home}
         {logged}
-        <MenuItem path="#about" smooth={true} menuItemClass={menuItemClass}>
+        <MenuItem path="/#about" smooth={true} menuItemClass={menuItemClass}>
           About Us
         </MenuItem>
-        <MenuItem path="#contact" smooth={true} menuItemClass={menuItemClass}>
+        <MenuItem path="/#contact" smooth={true} menuItemClass={menuItemClass}>
           Contact
         </MenuItem>
       </ul>
