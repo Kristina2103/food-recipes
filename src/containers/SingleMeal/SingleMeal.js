@@ -1,18 +1,39 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-import { withRouter } from "react-router-dom";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./SingleMeal.css";
+import SimilarMeals from "../../components/Recipes/SimilarMeals/SimilarMeals";
 class SingleMeal extends Component {
   componentDidMount() {
     this.props.getSingleMeal(this.props.match.params.id);
   }
+  filterDataByKeyName = (string, obj) => {
+    const data = Object.keys(obj)
+      .filter(item => {
+        return item.includes(string) === true && obj[item] !== "";
+      })
+      .map(item => obj[item]);
+    return data;
+  };
+
   render() {
     const meal = this.props.singleMeal;
     let content = <Spinner />;
-    if (meal)
+
+    if (meal) {
+      //Prepare data for ingredients table
+      const ingredients = this.filterDataByKeyName("strIngredient", meal);
+      const measure = this.filterDataByKeyName("strMeasure", meal);
+      const row = Object.keys(ingredients).map(key => {
+        return (
+          <tr key={key}>
+            <td>{ingredients[key]}</td>
+            <td>{measure[key]}</td>
+          </tr>
+        );
+      });
       content = (
         <Auxiliary>
           <section className={classes.First}>
@@ -43,8 +64,26 @@ class SingleMeal extends Component {
               </div>
             </div>
           </section>
+          <section className={classes.Ingredients}>
+            <table>
+              <thead>
+                <tr>
+                  <th>Ingredients</th>
+                  <th>Measure</th>
+                </tr>
+              </thead>
+              <tbody>{row}</tbody>
+            </table>
+          </section>
+          <section className={classes.SimilarRecipes}>
+            <SimilarMeals
+              category={this.props.singleMeal.strCategory}
+              numOfItems="3"
+            />
+          </section>
         </Auxiliary>
       );
+    }
     return <div>{content}</div>;
   }
 }
@@ -55,12 +94,11 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    getSingleMeal: id => dispatch(actions.getSingleMeal(id))
+    getSingleMeal: id => dispatch(actions.getSingleMeal(id)),
+    getRecipesByCategory: name => dispatch(actions.getRecipesByCategory(name))
   };
 };
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SingleMeal)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SingleMeal);

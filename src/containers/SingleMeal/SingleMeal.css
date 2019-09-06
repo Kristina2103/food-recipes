@@ -31,3 +31,8 @@ section {
 .Tag {
   text-align: left;
 }
+.Ingredients td,
+.Ingredients th {
+  padding: 7px 10px;
+  text-align: left;
+}
