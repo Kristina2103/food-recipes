@@ -13,14 +13,11 @@ import Layout from "./hoc/Layout/Layout";
 
 class App extends Component {
   render() {
-    let protectedRoutes = "";
-    if (this.props.isAuth)
-      protectedRoutes = <Route path="/my-meals" component={MyMeals} />;
     return (
       <div className="App">
         <Layout>
           <Switch>
-            {protectedRoutes}
+            <Route path="/myMeals" component={MyMeals} />;
             <Route path="/singleMeal/:id" component={SingleMeal} />
             <Route path="/category/:name" component={Category} />
             <Route path="/search-recipes" component={Search} />

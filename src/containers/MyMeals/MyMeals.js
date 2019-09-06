@@ -1,30 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions/index";
-import { withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import classes from "./MyMeals.css";
+import SimilarMeals from "../../components/Recipes/SimilarMeals/SimilarMeals";
 class MyMeals extends Component {
-  componentDidMount() {
-    // this.props.getSingleRecipe(this.props.match.params.id);
-  }
   render() {
-    return <div>MyMeals</div>;
+    if (this.props.isAuth) {
+      return (
+        <Auxiliary>
+          <section className={classes.First}>
+            <h1>My Meals</h1>
+            <SimilarMeals category={"Beef"} />
+          </section>
+        </Auxiliary>
+      );
+    } else {
+      return <Redirect to="/" />;
+    }
   }
 }
-// const mapStateToProps = state => {
-//   return {
-//     singleRecipe: state.main.singleRecipe
-//   };
-// };
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getSingleRecipe: id => dispatch(actions.getSingleRecipe(id))
-//   };
-// };
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-//   )(MyMeals)
-// );
-export default MyMeals;
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAuth
+  };
+};
+
+export default connect(mapStateToProps)(MyMeals);

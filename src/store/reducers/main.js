@@ -42,11 +42,14 @@ const getCategoryListFailed = state => {
 const getRecipesByCategorySuccess = (state, action) => {
   const recipesByCategory = Object.values(action.meals).map(el => {
     let obj = {};
+
     return {
       ...obj,
       name: el.strMeal,
       img: el.strMealThumb,
-      id: el.idMeal
+      id: el.idMeal,
+      category: el.strCategory,
+      country: el.strArea
     };
   });
   return {

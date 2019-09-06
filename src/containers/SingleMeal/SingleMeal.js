@@ -34,12 +34,13 @@ class SingleMeal extends Component {
           </tr>
         );
       });
+      let tag = meal.strTag ? `#${meal.strTags}` : "";
       content = (
         <Auxiliary>
           <section className={classes.First}>
             <div className={classes.Hero}>
               <h1>{meal.strMeal}</h1>
-              <p className={classes.Tag}>#{meal.strTags}</p>
+              <p className={classes.Tag}>{tag}</p>
             </div>
             <div className={classes.Hero}>
               <div className={classes.Image}>
@@ -94,8 +95,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    getSingleMeal: id => dispatch(actions.getSingleMeal(id)),
-    getRecipesByCategory: name => dispatch(actions.getRecipesByCategory(name))
+    getSingleMeal: id => dispatch(actions.getSingleMeal(id))
   };
 };
 export default connect(

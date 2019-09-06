@@ -27,7 +27,7 @@ class MenuList extends Component {
       );
     if (this.props.isAuth)
       logged = (
-        <MenuItem path="/my-meals" menuItemClass={menuItemClass}>
+        <MenuItem path="/myMeals" menuItemClass={menuItemClass}>
           MyMeals
         </MenuItem>
       );

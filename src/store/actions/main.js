@@ -8,30 +8,15 @@ export const toggleMobileMenu = () => {
 };
 
 //Get recipes by category
-export const getRecipesByCategory = (name, numOfItems) => {
-  if (numOfItems) {
-    return dispatch => {
-      axios
-        .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`)
-        .then(res => {
-          let arr = [];
-          for (let i = 0; i < numOfItems; i++) {
-            arr.push(
-              res.data.meals[Math.floor(Math.random() * res.data.meals.length)]
-            );
-          }
-          dispatch(getRecipesByCategorySuccess(arr));
-        });
-    };
-  } else {
-    return dispatch => {
-      axios
-        .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`)
-        .then(res => {
-          dispatch(getRecipesByCategorySuccess(res.data.meals));
-        });
-    };
-  }
+export const getRecipesByCategory = name => {
+  return dispatch => {
+    axios
+      .get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`)
+      .then(res => {
+        console.log(res.data.meals);
+        dispatch(getRecipesByCategorySuccess(res.data.meals));
+      });
+  };
 };
 export const getRecipesByCategorySuccess = meals => {
   return {
@@ -98,3 +83,4 @@ const getRecommendedRecipeSuccess = recommendedRecipe => {
     recommendedRecipe
   };
 };
+//

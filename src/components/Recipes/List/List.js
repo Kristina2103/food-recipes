@@ -9,21 +9,27 @@ class List extends Component {
     this.props.history.push(`/${this.props.onImageClickPath}/${param}`);
   };
   render() {
-    let obj = this.props[this.props.listType];
+    let obj = "";
     if (this.props.filteredList) {
       obj = this.props.filteredList;
+    } else if (this.props.listType === "similarMeal") {
+      obj = this.props.data;
+    } else obj = this.props[this.props.listType];
+    let list = null;
+    if (obj) {
+      list = Object.values(obj).map(el => {
+        return (
+          <ListItem
+            {...el}
+            listStyle={this.props.listStyle}
+            itemsPerRow={this.props.itemsPerRow}
+            key={el.id}
+            onListImageClick={() => this.onListImageClick(el[this.props.param])}
+          />
+        );
+      });
     }
-    const list = Object.values(obj).map(el => {
-      return (
-        <ListItem
-          {...el}
-          listStyle={this.props.listStyle}
-          itemsPerRow={this.props.itemsPerRow}
-          key={el.id}
-          onListImageClick={() => this.onListImageClick(el[this.props.param])}
-        />
-      );
-    });
+
     return <div className={classes.List}>{list}</div>;
   }
 }

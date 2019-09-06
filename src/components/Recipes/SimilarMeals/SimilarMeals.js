@@ -5,25 +5,52 @@ import * as actions from "../../../store/actions/index";
 import Spinner from "../../UI/Spinner/Spinner";
 import List from "../List/List";
 import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
+import axios from "axios";
 
 class SimilarMeals extends Component {
   state = {
     list: null
   };
   componentDidMount() {
-    this.props.getRecipesByCategory(this.props.category, this.props.numOfItems);
+    axios
+      .all([
+        axios.get("https://www.themealdb.com/api/json/v1/1/random.php"),
+        axios.get("https://www.themealdb.com/api/json/v1/1/random.php"),
+        axios.get("https://www.themealdb.com/api/json/v1/1/random.php")
+      ])
+      .then(res => {
+        const response = res.map(el => {
+          return { ...el.data.meals[0] };
+        });
+        const list = Object.values(response).map(el => {
+          let obj = {};
+          return {
+            ...obj,
+            name: el.strMeal,
+            img: el.strMealThumb,
+            id: el.idMeal,
+            category: el.strCategory,
+            country: el.strArea
+          };
+        });
+        this.setState({ list: list });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   render() {
     let content = <Spinner />;
-    if (this.props.recipesByCategory) {
+    if (this.state.list) {
       content = (
         <Auxiliary>
           <List
-            listType="recipesByCategory"
+            listType="similarMeal"
             listStyle="Light"
             itemsPerRow="3"
             param="id"
             onImageClickPath="singleMeal"
+            data={this.state.list}
           />
         </Auxiliary>
       );

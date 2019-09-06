@@ -36,3 +36,8 @@ section {
   padding: 7px 10px;
   text-align: left;
 }
+@media (max-width: 800px) {
+  .Hero {
+    flex-flow: column;
+  }
+}
