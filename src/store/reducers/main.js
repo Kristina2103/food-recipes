@@ -7,7 +7,9 @@ const initialState = {
   recipesByCategory: [],
   recommendedRecipe: [],
   updateRecipeListBySearch: null,
-  singleMeal: null
+  singleMeal: null,
+  globalSearchResult: [],
+  updatedGlobalSearch: null
 };
 const toggleMobileMenu = state => {
   return {
@@ -75,6 +77,29 @@ const getSingleMeal = (state, action) => {
     singleMeal: action.singleMeal
   };
 };
+const searchRecipesSuccess = (state, action) => {
+  const recipes = Object.values(action.meals).map(el => {
+    let obj = {};
+    return {
+      ...obj,
+      name: el.strMeal,
+      img: el.strMealThumb,
+      id: el.idMeal,
+      category: el.strCategory,
+      country: el.strArea
+    };
+  });
+  return {
+    ...state,
+    globalSearchResult: recipes
+  };
+};
+export const updatedGlobalSearch = (state, action) => {
+  return {
+    ...state,
+    updatedGlobalSearch: action.data
+  };
+};
 const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_MOBILE_MENU:
@@ -91,6 +116,10 @@ const mainReducer = (state = initialState, action) => {
       return updateRecipeListBySearch(state, action);
     case actionTypes.GET_SINGLE_MEAL_SUCCESS:
       return getSingleMeal(state, action);
+    case actionTypes.SEARCH_RECIPES_SUCCESS:
+      return searchRecipesSuccess(state, action);
+    case actionTypes.UPDATED_GLOABAL_SEARCH:
+      return updatedGlobalSearch(state, action);
     default:
       return state;
   }

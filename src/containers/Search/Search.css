@@ -1,0 +1,18 @@
+section {
+  padding-top: 100px;
+}
+.First {
+  padding-top: 0;
+}
+.Hero {
+  display: flex;
+  box-sizing: border-box;
+  /* justify-content: center; */
+}
+.CategoryFilter div {
+  align-items: flex-end;
+}
+.CategoryFilter select {
+  width: auto;
+  padding-right: 30px;
+}

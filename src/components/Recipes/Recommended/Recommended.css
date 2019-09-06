@@ -1,0 +1,8 @@
+.Recommended {
+  text-align: left;
+  flex: 0 0 300px;
+}
+.Recommended div {
+  /* width: 100%; */
+  margin: 0;
+}

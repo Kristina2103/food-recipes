@@ -6,20 +6,16 @@ import classes from "./Category.css";
 
 import Spinner from "../../components/UI/Spinner/Spinner";
 import List from "../../components/Recipes/List/List";
-import ListItem from "../../components/Recipes/List/ListItem/ListItem";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
+import Recommended from "../../components/Recipes/Recommended/Recommended";
 
 class Category extends Component {
   componentDidMount() {
     this.props.getRecipesByCategory(this.props.match.params.name);
-    this.props.getRecommendedRecipe();
   }
 
-  onRecommendedClick = id => {
-    alert(id);
-  };
-  handleChange = e => {
+  handleSearchBarChange = e => {
     let currentList = this.props.recipesByCategory;
     let filteredList = [];
     if (e.target.value !== "") {
@@ -41,20 +37,10 @@ class Category extends Component {
           <section className={classes.First}>
             <h1>{this.props.match.params.name}</h1>
             <div className={classes.Hero}>
-              <div className={classes.Recommended}>
-                <p>Our recommendation</p>
-                <ListItem
-                  onListImageClick={() =>
-                    this.onRecommendedClick(this.props.recommendedRecipe.idMeal)
-                  }
-                  listStyle="Light"
-                  img={this.props.recommendedRecipe.strMealThumb}
-                  name={this.props.recommendedRecipe.strMeal}
-                />
-              </div>
+              <Recommended />
               <div className={classes.SearchBar}>
                 <SearchBar
-                  handleChange={e => this.handleChange(e)}
+                  handleChange={e => this.handleSearchBarChange(e)}
                   placeholder="Search meals"
                 />
               </div>
@@ -80,14 +66,12 @@ class Category extends Component {
 
 const mapStateToProps = state => {
   return {
-    recipesByCategory: state.main.recipesByCategory,
-    recommendedRecipe: state.main.recommendedRecipe
+    recipesByCategory: state.main.recipesByCategory
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     getRecipesByCategory: name => dispatch(actions.getRecipesByCategory(name)),
-    getRecommendedRecipe: () => dispatch(actions.getRecommendedRecipe()),
     updateRecipeListBySearch: filteredList =>
       dispatch(actions.updateRecipeListBySearch(filteredList))
   };

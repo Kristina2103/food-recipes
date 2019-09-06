@@ -26,13 +26,15 @@ const Input = props => {
       );
       break;
     case "select":
-      const options = props.elementConfig.options.map(o => (
-        <option key={o.value} value={o.value}>
-          {o.displayValue}
+      const options = props.options.map(o => (
+        <option key={o} value={o}>
+          {o}
         </option>
       ));
+
       inputElement = (
         <select value={props.value} onChange={props.onInputChange}>
+          <option value="">{props.placeholder}</option>
           {options}
         </select>
       );

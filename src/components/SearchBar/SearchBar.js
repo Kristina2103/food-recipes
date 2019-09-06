@@ -5,7 +5,7 @@ import classes from "./SearchBar.css";
 class SearchBar extends Component {
   render() {
     return (
-      <form className={classes.SearchBar}>
+      <form className={classes.SearchBar} onSubmit={this.props.onFormSubmit}>
         <input
           onChange={this.props.handleChange}
           type="text"

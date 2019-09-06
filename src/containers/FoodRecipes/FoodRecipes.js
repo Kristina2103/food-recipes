@@ -14,7 +14,6 @@ class FoodRecipes extends Component {
   componentDidMount() {
     this.props.getCategoryList();
   }
-
   render() {
     let content = this.props.errorCategory ? (
       "Error! Can't fetch data!"
