@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { reducer as formReducer } from "redux-form";
 
 import authReducer from "./store/reducers/auth";
+import searchReducer from "./store/reducers/search";
 import mainReducer from "./store/reducers/main";
 
 import "./index.css";
@@ -16,6 +17,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reducers = combineReducers({
   auth: authReducer,
   main: mainReducer,
+  search: searchReducer,
   form: formReducer
 });
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));

@@ -1,46 +1,62 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { updatedGlobalSearch } from "../../store/actions/index";
+import { updatedGlobalSearch, searchRecipes } from "../../store/actions/index";
 import classes from "./Search.css";
 
-import Input from "../../components/UI/Input/Input";
-import Spinner from "../../components/UI/Spinner/Spinner";
 import List from "../../components/Recipes/List/List";
 import Recommended from "../../components/Recipes/Recommended/Recommended";
+import CategoryFilterForm from "../../components/Forms/CategoryFilterForm";
 
 class Search extends Component {
-  state = {
-    categoryValue: "",
-    updatedGlobalSearch: null
-  };
+  componentDidMount() {
+    //If page is refreshed and global state is empty, get data by query param
+    if (!this.props.globalSearchResult) {
+      this.props.searchRecipes(this.props.match.params.term);
+    }
+  }
 
-  onCategoryChange = e => {
-    this.filterBycategory(e.target.value);
-  };
+  //On change category select input, filter recipes by selected category
   filterBycategory = category => {
-    console.log(category);
     let currentList = this.props.globalSearchResult;
     let filteredList = [];
-    if (category !== "") {
+    //If some category is selected, return only recipes that belongs to selected category or
+    //if no category is selected, return all recipes for serch term
+    if (category !== "0") {
       filteredList = currentList.filter(item => item.category === category);
     } else {
       filteredList = this.props.globalSearchResult;
     }
-
     return this.props.updatedGlobalSearch(filteredList);
   };
-  transformData = data => {
-    const category = Object.keys(data).map(item => data[item].category);
+  //Get category properties from search result and remove duplicate category names
+  getCategoryList = recipes => {
+    const category = Object.keys(recipes).map(item => recipes[item].category);
+    //remove duplicates
     return [...new Set(category)];
   };
   render() {
-    let content = <Spinner />;
-    let toTransform = null;
-    let uniqCatList = null;
-    if (this.props.globalSearchResult) {
-      toTransform = this.props.globalSearchResult;
-      uniqCatList = this.transformData(toTransform);
-      content = (
+    let searchResults = <p>No search results</p>;
+    let categoryList = null;
+    if (this.props.searchError) searchResults = <p>Invalid search term</p>;
+    if (this.props.updatedSearchResults) {
+      //List of search results categories
+      categoryList = this.getCategoryList(this.props.globalSearchResult);
+      searchResults = (
+        <section>
+          <List
+            listType="searchList"
+            listStyle="Light"
+            itemsPerRow="3"
+            param="id"
+            onImageClickPath="singleMeal"
+            data={this.props.updatedSearchResults}
+          />
+        </section>
+      );
+    }
+
+    return (
+      <div className={classes.Category}>
         <Fragment>
           <section className={classes.First}>
             <h1>{this.props.match.params.name}</h1>
@@ -50,41 +66,30 @@ class Search extends Component {
             </div>
           </section>
           <div className={classes.CategoryFilter}>
-            <Input
-              value={this.state.categoryValue}
-              elementType="select"
-              onInputChange={e => this.onCategoryChange(e)}
-              options={uniqCatList}
-              placeholder="Category"
+            <CategoryFilterForm
+              onChange={values => this.filterBycategory(values.category)}
+              options={categoryList}
             />
           </div>
           <hr />
-          <section>
-            <List
-              listType="globalSearchResult"
-              listStyle="Light"
-              itemsPerRow="3"
-              param="id"
-              onImageClickPath="singleMeal"
-              data={this.state.updatedGlobalSearch}
-            />
-          </section>
+          {searchResults}
         </Fragment>
-      );
-    }
-
-    return <div className={classes.Category}>{content}</div>;
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    globalSearchResult: state.main.globalSearchResult
+    globalSearchResult: state.search.globalSearchResult,
+    updatedSearchResults: state.search.updatedSearchResults,
+    searchError: state.search.searchError
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    updatedGlobalSearch: name => dispatch(updatedGlobalSearch(name))
+    updatedGlobalSearch: name => dispatch(updatedGlobalSearch(name)),
+    searchRecipes: name => dispatch(searchRecipes(name))
   };
 };
 export default connect(

@@ -4,3 +4,15 @@
 .ErrorMsg {
   color: red;
 }
+
+.Input {
+  width: 80%;
+  padding: 6px 5px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.Input:focus {
+  outline: none;
+}

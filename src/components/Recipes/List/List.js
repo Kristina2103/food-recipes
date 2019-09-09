@@ -16,10 +16,6 @@ class List extends Component {
     if (this.props.listType === "similarMeal") {
       obj = this.props.data;
     }
-    if (this.props.filteredSearchList) {
-      obj = this.props.filteredSearchList;
-    }
-    // obj = this.props[this.props.listType];
     let list = null;
     if (obj) {
       list = Object.values(obj).map(el => {
@@ -43,8 +39,7 @@ const mapStateToProps = state => {
     category: state.main.categoryList,
     recipesByCategory: state.main.recipesByCategory,
     filteredList: state.main.updateRecipeListBySearch,
-    globalSearchResult: state.main.globalSearchResult,
-    filteredSearchList: state.main.updatedGlobalSearch
+    searchList: state.search.updatedSearchResults
   };
 };
 

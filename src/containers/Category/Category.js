@@ -6,7 +6,7 @@ import classes from "./Category.css";
 
 import Spinner from "../../components/UI/Spinner/Spinner";
 import List from "../../components/Recipes/List/List";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchForm from "../../components/Forms/SearchForm";
 import Recommended from "../../components/Recipes/Recommended/Recommended";
 
 class Category extends Component {
@@ -14,13 +14,14 @@ class Category extends Component {
     this.props.getRecipesByCategory(this.props.match.params.name);
   }
 
-  handleSearchBarChange = e => {
+  handleSearchBarChange = value => {
     let currentList = this.props.recipesByCategory;
     let filteredList = [];
-    if (e.target.value !== "") {
+    console.log(value);
+    if (value.term !== undefined) {
       filteredList = currentList.filter(item => {
         const lc = item.name.toLowerCase();
-        const filter = e.target.value.toLowerCase();
+        const filter = value.term.toLowerCase();
         return lc.includes(filter);
       });
     } else {
@@ -38,10 +39,7 @@ class Category extends Component {
             <div className={classes.Hero}>
               <Recommended />
               <div className={classes.SearchBar}>
-                <SearchBar
-                  handleChange={e => this.handleSearchBarChange(e)}
-                  placeholder="Search meals"
-                />
+                <SearchForm onChange={this.handleSearchBarChange} />
               </div>
             </div>
           </section>

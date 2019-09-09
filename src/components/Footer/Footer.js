@@ -11,7 +11,9 @@ const Footer = () => {
     <Fragment>
       <div className={classes.Footer}>
         <div className={classes.Logo}>
-          <Logo />
+          <a href="/">
+            <Logo />
+          </a>
         </div>
         <div className={classes.SocialIcons}>
           <SocialIcon

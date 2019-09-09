@@ -1,6 +1,14 @@
 import * as actionTypes from "./actionTypes";
 
-export const logInSuccess = (email, pass) => {
+export const logIn = (email, pass) => {
+  return dispatch => {
+    dispatch(logInSuccess(email, pass));
+    setTimeout(function() {
+      dispatch(toggleLoginTooltip());
+    }, 1000);
+  };
+};
+const logInSuccess = (email, pass) => {
   return {
     type: actionTypes.LOGIN_SUCCESS,
     email,
@@ -13,8 +21,11 @@ export const logInFailed = () => {
   };
 };
 export const logOut = () => {
-  return {
-    type: actionTypes.LOGOUT
+  return dispatch => {
+    setTimeout(function() {
+      dispatch(toggleLoginTooltip());
+    }, 1000);
+    dispatch({ type: actionTypes.LOGOUT });
   };
 };
 export const toggleLoginTooltip = () => {

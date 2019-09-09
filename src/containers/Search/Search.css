@@ -9,10 +9,12 @@ section {
   box-sizing: border-box;
   /* justify-content: center; */
 }
-.CategoryFilter div {
+.CategoryFilter {
   align-items: flex-end;
+  display: flex;
+  flex-flow: column;
 }
-.CategoryFilter select {
+.CategoryFilter form {
   width: auto;
   padding-right: 30px;
 }

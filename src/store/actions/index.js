@@ -1,11 +1,14 @@
-export { toggleLoginTooltip, logOut, logInFailed, logInSuccess } from "./auth";
+export { toggleLoginTooltip, logIn, logOut, logInFailed } from "./auth";
 export {
   toggleMobileMenu,
   getCategoryList,
   getRecipesByCategory,
   getRecommendedRecipe,
-  updateRecipeListBySearch,
   getSingleMeal,
-  searchRecipes,
-  updatedGlobalSearch
+  updateRecipeListBySearch
 } from "./main";
+export {
+  searchRecipes,
+  searchRecipesSuccess,
+  updatedGlobalSearch
+} from "./search";

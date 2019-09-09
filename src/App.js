@@ -20,7 +20,7 @@ class App extends Component {
             <Route path="/myMeals" component={MyMeals} />;
             <Route path="/singleMeal/:id" component={SingleMeal} />
             <Route path="/category/:name" component={Category} />
-            <Route path="/search" component={Search} />
+            <Route path="/search/:term" component={Search} />
             <Route path="/" exact component={FoodRecipes} />
             <Redirect to="/" />
           </Switch>

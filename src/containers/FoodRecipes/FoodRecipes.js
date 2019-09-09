@@ -8,7 +8,7 @@ import headerImg from "../../assets/images/header.png";
 import classes from "./FoodRecipes.css";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import List from "../../components/Recipes/List/List";
-import ContactForm from "../../components/ContactForm/ContactForm";
+import ContactForm from "../../components/Forms/ContactForm";
 
 class FoodRecipes extends Component {
   state = {
@@ -58,12 +58,8 @@ class FoodRecipes extends Component {
                   metus. Praesent in arcu eget enim rhoncus elementum in
                   ultrices ante. Praesent ut lacus ipsum. Lorem ipsum dolor sit
                   amet, consectetur adipiscing elit euismod. libero rutrum,
-                  tincidunt turpis ut, aliquam metus. Praesent in arcu eget enim
-                  rhoncus elementum in ultrices ante. Praesent ut lacus ipsum.
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                  euismod.
+                  tincidunt turpis ut, aliquam metus.
                 </p>
-                {/* <Button clicked={this.onCategoryBtnClick}>Category</Button> */}
                 <div className={classes.BtnLink}>
                   <a href="#categories" className={ButtonCss.Button}>
                     Categories

@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./ContactForm.css";
+import classes from "./Forms.css";
 import Button from "../UI/Button/Button";
 import { Field, reduxForm } from "redux-form";
 

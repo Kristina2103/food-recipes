@@ -5,88 +5,29 @@ import * as actions from "../../store/actions/index";
 import classes from "./Auth.css";
 import Tooltip from "../UI/Tooltip/Tooltip";
 import Avatar from "../Header/Avatar/Avatar";
-import Input from "../UI/Input/Input";
 import Button from "../UI/Button/Button";
+import LoginForm from "../Forms/LoginForm";
 class Auth extends Component {
-  state = {
-    auth: {
-      email: {
-        value: "",
-        elementType: "input",
-        elementConfig: {
-          type: "email",
-          placeholder: "E-mail"
-        }
-      },
-      password: {
-        value: "",
-        elementType: "input",
-        elementConfig: {
-          type: "password",
-          placeholder: "Password"
-        }
-      }
-    }
-  };
-  onInputChange = (e, id) => {
-    const value = e.target.value;
-    this.setState(prevState => {
-      return {
-        ...prevState,
-        auth: {
-          ...prevState.auth,
-          [id]: {
-            ...prevState.auth[id],
-            value: value
-          }
-        }
-      };
-    });
-  };
+  //Show or hide login/logout tooltip on avatar click
   onAvatarClick = () => {
     this.props.toggleLoginTooltip();
   };
-
-  onFormSubmit = e => {
-    e.preventDefault();
-    const email = this.state.auth.email.value;
-    const pass = this.state.auth.password.value;
-    if (email === "admin@admin.com" && pass === "admin123") {
-      return this.props.logInSuccess(email, pass);
-    } else {
-      return this.props.logInFailed();
-    }
+  //Handle login form submit
+  submit = values => {
+    return this.props.logIn(values.email, values.pass);
   };
-
   render() {
-    let wrongCredentialsMsg = "";
-    if (this.props.wrongCredentials)
-      wrongCredentialsMsg = "Email: admin@admin.com Pass: admin123";
-    const inputs = Object.keys(this.state.auth).map(el => {
-      return (
-        <Input
-          key={el}
-          value={this.state.auth[el].value}
-          elementType={this.state.auth[el].elementType}
-          onInputChange={e => this.onInputChange(e, el)}
-          elementConfig={this.state.auth[el].elementConfig}
-        />
-      );
-    });
+    //Tooltip for login
     let tooltip = (
       <Tooltip opened={this.props.isTooltipOpened}>
-        <form onSubmit={this.onFormSubmit}>
-          {inputs}
-          <p className={classes.ErrorMsg}>{wrongCredentialsMsg}</p>
-          <Button typeButton="Primary">Submit</Button>
-        </form>
+        <LoginForm onSubmit={this.submit} />
       </Tooltip>
     );
+    //Tooltip for logout
     if (this.props.isAuth)
       tooltip = (
         <Tooltip opened={this.props.isTooltipOpened}>
           <h3>You are successfully logged in!</h3>
-
           <Button typeButton="Success" clicked={this.props.logOut}>
             Logout
           </Button>
@@ -109,7 +50,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    logInSuccess: (email, pass) => dispatch(actions.logInSuccess(email, pass)),
+    logIn: (email, pass) => dispatch(actions.logIn(email, pass)),
     logInFailed: () => dispatch(actions.logInFailed()),
     logOut: () => dispatch(actions.logOut()),
     toggleLoginTooltip: () => dispatch(actions.toggleLoginTooltip())

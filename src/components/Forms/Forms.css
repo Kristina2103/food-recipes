@@ -1,3 +1,26 @@
+.ErrorMsg {
+  color: red;
+}
+
+.Input,
+.Textarea,
+.SearchInput {
+  width: 80%;
+  padding: 6px 5px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.Input,
+.Textarea,
+.SearchInput {
+  outline: none;
+}
+.SearchInput {
+  width: auto;
+  padding-right: 30px;
+}
 .SearchBar {
   display: flex;
   align-items: center;
@@ -21,7 +44,7 @@
   cursor: pointer;
   position: absolute;
   right: 1rem;
-  top: 20%;
+  top: 28%;
   opacity: 0.5;
   font-size: 18px;
 }
