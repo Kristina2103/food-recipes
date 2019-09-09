@@ -1,9 +1,8 @@
-import React from "react";
-import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
+import React, { Fragment } from "react";
 import classes from "./Button.css";
 
 const Button = props => (
-  <Auxiliary>
+  <Fragment>
     <button
       className={[classes.Button, classes[props.typeButton]].join(" ")}
       onClick={props.clicked}
@@ -11,7 +10,7 @@ const Button = props => (
     >
       {props.children}
     </button>
-  </Auxiliary>
+  </Fragment>
 );
 
 export default Button;

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import classes from "./Footer.css";
 import Logo from "../Logo/Logo";
 import SocialIcon from "../SocialIcon/SocialIcon";
@@ -9,7 +8,7 @@ import InstaImg from "../../assets/icons/insta.png";
 
 const Footer = () => {
   return (
-    <Auxiliary>
+    <Fragment>
       <div className={classes.Footer}>
         <div className={classes.Logo}>
           <Logo />
@@ -30,7 +29,7 @@ const Footer = () => {
       <div className={classes.Copyright}>
         <p>Copyright - Golux Technologies - Kristina Pejčić</p>
       </div>
-    </Auxiliary>
+    </Fragment>
   );
 };
 

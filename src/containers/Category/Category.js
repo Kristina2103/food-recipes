@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import { withRouter } from "react-router-dom";
@@ -7,7 +7,6 @@ import classes from "./Category.css";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import List from "../../components/Recipes/List/List";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import Recommended from "../../components/Recipes/Recommended/Recommended";
 
 class Category extends Component {
@@ -33,7 +32,7 @@ class Category extends Component {
     let content = <Spinner />;
     if (this.props.recipesByCategory) {
       content = (
-        <Auxiliary>
+        <Fragment>
           <section className={classes.First}>
             <h1>{this.props.match.params.name}</h1>
             <div className={classes.Hero}>
@@ -56,7 +55,7 @@ class Category extends Component {
               onImageClickPath="singleMeal"
             />
           </section>
-        </Auxiliary>
+        </Fragment>
       );
     }
 

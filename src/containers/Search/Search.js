@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { updatedGlobalSearch } from "../../store/actions/index";
 import classes from "./Search.css";
@@ -6,7 +6,6 @@ import classes from "./Search.css";
 import Input from "../../components/UI/Input/Input";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import List from "../../components/Recipes/List/List";
-import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import Recommended from "../../components/Recipes/Recommended/Recommended";
 
 class Search extends Component {
@@ -42,7 +41,7 @@ class Search extends Component {
       toTransform = this.props.globalSearchResult;
       uniqCatList = this.transformData(toTransform);
       content = (
-        <Auxiliary>
+        <Fragment>
           <section className={classes.First}>
             <h1>{this.props.match.params.name}</h1>
             <div className={classes.Hero}>
@@ -70,7 +69,7 @@ class Search extends Component {
               data={this.state.updatedGlobalSearch}
             />
           </section>
-        </Auxiliary>
+        </Fragment>
       );
     }
 

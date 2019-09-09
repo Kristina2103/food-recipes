@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
 
 import Spinner from "../../UI/Spinner/Spinner";
 import List from "../List/List";
-import Auxiliary from "../../../hoc/Auxiliary/Auxiliary";
 import axios from "axios";
 
 class SimilarMeals extends Component {
@@ -43,7 +42,7 @@ class SimilarMeals extends Component {
     let content = <Spinner />;
     if (this.state.list) {
       content = (
-        <Auxiliary>
+        <Fragment>
           <List
             listType="similarMeal"
             listStyle="Light"
@@ -52,7 +51,7 @@ class SimilarMeals extends Component {
             onImageClickPath="singleMeal"
             data={this.state.list}
           />
-        </Auxiliary>
+        </Fragment>
       );
     }
 

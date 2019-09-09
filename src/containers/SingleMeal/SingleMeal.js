@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import classes from "./SingleMeal.css";
 import SimilarMeals from "../../components/Recipes/SimilarMeals/SimilarMeals";
@@ -36,7 +35,7 @@ class SingleMeal extends Component {
       });
       let tag = meal.strTag ? `#${meal.strTags}` : "";
       content = (
-        <Auxiliary>
+        <Fragment>
           <section className={classes.First}>
             <div className={classes.Hero}>
               <h1>{meal.strMeal}</h1>
@@ -82,7 +81,7 @@ class SingleMeal extends Component {
               numOfItems="3"
             />
           </section>
-        </Auxiliary>
+        </Fragment>
       );
     }
     return <div>{content}</div>;

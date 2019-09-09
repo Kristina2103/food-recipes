@@ -2,7 +2,7 @@ import React, { Component, Fragment as ReactFragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-import Button from "../../components/UI/Button/Button";
+import ButtonCss from "../../components/UI/Button/Button.css";
 import aboutImg from "../../assets/images/about.jpg";
 import headerImg from "../../assets/images/header.png";
 import classes from "./FoodRecipes.css";
@@ -26,6 +26,10 @@ class FoodRecipes extends Component {
     });
     //Save data in local storage
     Object.keys(values).map(el => localStorage.setItem(`${el}`, values[el]));
+  };
+  //Go to category page on button click
+  onCategoryBtnClick = () => {
+    this.props.history.push("/category");
   };
   render() {
     //Display data if categories are fetched
@@ -53,16 +57,25 @@ class FoodRecipes extends Component {
                   Vestibulum auctor libero rutrum, tincidunt turpis ut, aliquam
                   metus. Praesent in arcu eget enim rhoncus elementum in
                   ultrices ante. Praesent ut lacus ipsum. Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit. euismod.
+                  amet, consectetur adipiscing elit euismod. libero rutrum,
+                  tincidunt turpis ut, aliquam metus. Praesent in arcu eget enim
+                  rhoncus elementum in ultrices ante. Praesent ut lacus ipsum.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                  euismod.
                 </p>
-                <Button>Category</Button>
+                {/* <Button clicked={this.onCategoryBtnClick}>Category</Button> */}
+                <div className={classes.BtnLink}>
+                  <a href="#categories" className={ButtonCss.Button}>
+                    Categories
+                  </a>
+                </div>
               </div>
             </div>
             <div className={classes.ImgDiv}>
               <img src={headerImg} alt="Food Recipes" />
             </div>
           </section>
-          <section className={classes.Categories}>
+          <section id="categories" className={classes.Categories}>
             <List
               listType="category"
               listStyle="Dark"

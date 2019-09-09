@@ -6,28 +6,6 @@
   align-items: center;
 }
 
-/*  STAROOOO */
-/* .ImgDiv,
-.TextDiv {
-  flex: 1;
-}
-.Hero .ImgDiv {
-  text-align: right;
-}
-.Hero .ImgDiv img,
-.TextDivChild {
-  max-width: 80%;
-  padding: 10px;
-}
-.Hero .TextDivChild {
-  float: right;
-  width: 70%;
-}
-.Hero .TextDivChild button {
-  float: left;
-} */
-
-/* NOVOOOOO */
 section {
   padding-top: 100px;
 }
@@ -49,6 +27,7 @@ section {
 .Underlined span {
   position: relative;
 }
+
 .Underlined span:after {
   background-color: black;
   content: "";
@@ -64,9 +43,13 @@ section {
   max-width: 80%;
   padding: 10px;
 }
-.Hero .TextDivChild button {
-  margin: 0;
+.BtnLink {
+  display: flex;
 }
+.BtnLink a {
+  text-decoration: none;
+}
+
 .SuccessMsg {
   color: green;
 }
