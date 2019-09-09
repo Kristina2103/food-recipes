@@ -3,8 +3,8 @@ import React, { Fragment } from "react";
 import classes from "./Footer.css";
 import Logo from "../Logo/Logo";
 import SocialIcon from "../SocialIcon/SocialIcon";
-import FbImg from "../../assets/icons/fb.png";
-import InstaImg from "../../assets/icons/insta.png";
+import FbImg from "../../assets/icons/FB.png";
+import InstaImg from "../../assets/icons/INSTA.png";
 
 const Footer = () => {
   return (
