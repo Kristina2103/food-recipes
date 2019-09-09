@@ -4,6 +4,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
+import { reducer as formReducer } from "redux-form";
 
 import authReducer from "./store/reducers/auth";
 import mainReducer from "./store/reducers/main";
@@ -14,7 +15,8 @@ import * as serviceWorker from "./serviceWorker";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reducers = combineReducers({
   auth: authReducer,
-  main: mainReducer
+  main: mainReducer,
+  form: formReducer
 });
 const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)));
 ReactDOM.render(

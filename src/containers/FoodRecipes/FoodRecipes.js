@@ -1,29 +1,48 @@
-import React, { Component } from "react";
+import React, { Component, Fragment as ReactFragment } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
-import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import Button from "../../components/UI/Button/Button";
 import aboutImg from "../../assets/images/about.jpg";
 import headerImg from "../../assets/images/header.png";
 import classes from "./FoodRecipes.css";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import List from "../../components/Recipes/List/List";
-import Contact from "../../components/Contact/Contact";
+import ContactForm from "../../components/ContactForm/ContactForm";
+
 class FoodRecipes extends Component {
+  state = {
+    isFormSubmited: false,
+    formMsg: null
+  };
   componentDidMount() {
     this.props.getCategoryList();
   }
+  //Handle contact form submit
+  submit = values => {
+    this.setState({
+      isFormSubmited: true,
+      formMsg: " Your message has successfully been sent!"
+    });
+    //Save data in local storage
+    Object.keys(values).map(el => localStorage.setItem(`${el}`, values[el]));
+  };
   render() {
+    //Display data if categories are fetched
     let content = this.props.errorCategory ? (
       "Error! Can't fetch data!"
     ) : (
       <Spinner />
     );
-
+    //Display success msg on form submit
+    let formMsg = this.state.isFormSubmited ? (
+      <p className={classes.SuccessMsg}>{this.state.formMsg}</p>
+    ) : (
+      ""
+    );
     if (this.props.categoryList.length !== 0) {
       content = (
-        <Auxiliary>
+        <ReactFragment>
           <section className={[classes.Hero, classes.First].join(" ")}>
             <div className={classes.TextDiv}>
               <div className={classes.TextDivChild}>
@@ -86,13 +105,14 @@ class FoodRecipes extends Component {
             <h2 className={classes.Underlined}>
               <span>Contact</span>
             </h2>
-            <Contact />
+            {formMsg}
+            <ContactForm onSubmit={this.submit} />
           </section>
-        </Auxiliary>
+        </ReactFragment>
       );
     }
 
-    return <Auxiliary>{content}</Auxiliary>;
+    return <ReactFragment>{content}</ReactFragment>;
   }
 }
 const mapStateToProps = state => {

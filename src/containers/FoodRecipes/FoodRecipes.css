@@ -43,7 +43,7 @@ section {
 }
 .Underlined {
   font-weight: 300;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   color: rgba(0, 0, 0, 0.748);
 }
 .Underlined span {
@@ -66,6 +66,9 @@ section {
 }
 .Hero .TextDivChild button {
   margin: 0;
+}
+.SuccessMsg {
+  color: green;
 }
 .Contact {
   text-align: center;
